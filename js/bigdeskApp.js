@@ -218,6 +218,18 @@ $(document).ready(
             button = $("#connectButton"),
             ajaxIndicator = $("#ajaxIndicator");
 
+        setTimeout(function() {
+            var cookies = document.cookie.split("=")
+
+            for (n = 0, l = cookies.length; n < l; n++) {
+                if (cookies[n] == "restEndPoint") {
+                    restEndPoint.val(cookies[n + 1]);
+                    button.click();
+                    return;
+                }
+            }
+        }, 20);
+
         var isConnected = function() {
             return (button.val() !== "Connect");
         };
@@ -277,6 +289,7 @@ $(document).ready(
             if (isConnected()) {
                 disconnectFrom(restEndPoint.val(), switchButtonText);
             } else {
+                document.cookie = "restEndPoint=" + restEndPoint.val() + ";Path=/;expires=Wednesday, 09-Nov-2020 23:12:40 GMT"
                 connectTo(restEndPoint.val(), getRefreshInterval(), getStoreSize(), bigdeskEventDispatcher, selectedView, switchButtonText);
             }
         });
