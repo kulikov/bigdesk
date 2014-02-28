@@ -246,6 +246,8 @@ $(document).ready(
             if (isConnected()) {
                 button.val("Connect");
                 restEndPoint.removeAttr('disabled');
+
+                $("#clusterNodes .masterNode").click();
             } else {
                 button.val("Disconnect");
                 restEndPoint.attr('disabled','disabled');
