@@ -249,7 +249,7 @@ $(document).ready(
             } else {
                 button.val("Disconnect");
                 restEndPoint.attr('disabled','disabled');
-                setTimeout(function() { $("#clusterNodes .masterNode").click(); }, 200);
+                setTimeout(function() { $("#clusterNodes .masterNode").click(); }, 1000);
             }
         };
 
